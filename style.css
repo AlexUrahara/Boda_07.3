@@ -2073,6 +2073,10 @@ body {
   .rsvp-imagen-inferior {
     display: block;
   }
+  .rsvp-imagen-inferior img {
+    width: 300px;
+    margin-bottom: 4px;
+  }
   .rsvp-section {
     padding-bottom: calc(4rem + 120px);
   }
@@ -2081,7 +2085,8 @@ body {
 /* Ajustes para móviles grandes */
 @media (max-width: 768px) {
   .rsvp-imagen-inferior img {
-    width: 100px;
+    width: 300px;
+    margin-bottom: 4px;
   }
   .rsvp-section {
     padding-bottom: calc(4rem + 100px);
@@ -2091,28 +2096,16 @@ body {
 /* Ajustes para móviles pequeños */
 @media (max-width: 576px) {
   .rsvp-imagen-inferior img {
-    width: 80px;
+    width: 280px;
+    margin-bottom: 9px;
   }
   .rsvp-section {
     padding-bottom: calc(3rem + 80px);
   }
 }
-
-/* Pantallas muy pequeñas (hasta 480px) – imagen superior de RSVP */
-@media (max-width: 480px) {
-  .rsvp-imagen-superior img {
-    width: 60px;
+.rsvp-imagen-superior img {
+    width: 334px;
   }
-  .rsvp-section {
-    padding-top: calc(3rem + 60px);
-  }
-  .rsvp-imagen-inferior img {
-    width: 60px;
-  }
-  .rsvp-section {
-    padding-bottom: calc(3rem + 60px);
-  }
-}
 
 /* Mostrar solo en pantallas menores a 992px (tablets y móviles) */
 @media (max-width: 991px) {
@@ -2127,7 +2120,7 @@ body {
 /* Ajustes para móviles grandes */
 @media (max-width: 768px) {
   .rsvp-imagen-superior img {
-    width: 100px;
+    width: 334px;
   }
   .rsvp-section {
     padding-top: calc(4rem + 100px);
@@ -2137,10 +2130,21 @@ body {
 /* Ajustes para móviles pequeños */
 @media (max-width: 576px) {
   .rsvp-imagen-superior img {
-    width: 80px;
+    width: 300px;
   }
   .rsvp-section {
     padding-top: calc(3rem + 80px);
+  }
+}
+@media (max-width: 480px) and (min-width: 394px) {
+  .rsvp-imagen-superior img {
+    width: 300px;
+  }
+  }
+/* Pantallas de 393px o menos (móviles pequeños) */
+@media (max-width: 393px) {
+  .rsvp-imagen-superior img {
+    width: 300px;
   }
 }
 
