@@ -2126,7 +2126,7 @@ body {
 /* Ajustes para móviles grandes */
 @media (max-width: 768px) {
   .rsvp-imagen-superior img {
-    width: 334px;
+    width: 234px;
   }
   .rsvp-section {
     padding-top: calc(4rem + 100px);
