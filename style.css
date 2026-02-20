@@ -2136,7 +2136,7 @@ body {
 /* Ajustes para móviles pequeños */
 @media (max-width: 576px) {
   .rsvp-imagen-superior img {
-    width: 300px;
+    width: 200px;
   }
   .rsvp-section {
     padding-top: calc(3rem + 80px);
@@ -2150,7 +2150,7 @@ body {
 /* Pantallas de 393px o menos (móviles pequeños) */
 @media (max-width: 393px) {
   .rsvp-imagen-superior img {
-    width: 300px;
+    width: 100px;
   }
 }
 
