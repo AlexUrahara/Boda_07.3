@@ -2138,7 +2138,7 @@ body {
 }
 @media (max-width: 480px) and (min-width: 394px) {
   .rsvp-imagen-superior img {
-    width: 300px;
+    width: 200px;
   }
   }
 /* Pantallas de 393px o menos (móviles pequeños) */
