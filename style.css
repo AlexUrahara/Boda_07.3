@@ -2103,6 +2103,12 @@ body {
     padding-bottom: calc(3rem + 80px);
   }
 }
+@media (max-width: 480px) and (min-width: 394px) {
+  .rsvp-imagen-inferior img {
+    width: 180px;
+  }
+}
+
 .rsvp-imagen-superior img {
     width: 334px;
   }
