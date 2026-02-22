@@ -1172,25 +1172,31 @@ body {
   opacity: 0.5;
 }
 
+/* === MEDIA QUERIES DE HISTORIA AJUSTADOS SEGÚN VESTIMENTA === */
 @media (max-width: 992px) {
   .historia-grid { grid-template-columns: 1fr; gap: 2rem; }
   .historia-imagen { max-width: 580px; }
   .historia-section::after { width: 160px; height: 160px; opacity: 0.54; }
+  /* Tamaños de fuente desde vestimenta */
+  .historia-item h3 { font-size: 1.8rem; }
+  .historia-item p { font-size: 0.95rem; }
 }
 
 @media (max-width: 768px) {
   .historia-imagen { max-width: 480px; }
-  .historia-item h3 { font-size: 1.3rem; }
+  .historia-item h3 { font-size: 2.2rem; } /* antes 1.3rem */
   .historia-divider { width: 50px; }
   .historia-section::after { width: 150px; height: 150px; opacity: 0.53; }
+  .historia-item p { font-size: 0.95rem; }
 }
 
 @media (max-width: 576px) {
   .historia-imagen { max-width: 400px; }
-  .historia-item h3 { font-size: 1.2rem; }
+  .historia-item h3 { font-size: 1.9rem; } /* antes 1.2rem */
   .historia-divider { width: 40px; margin-left: 20px; }
   .historia-item { padding: 25px; }
   .historia-section::after { width: 120px; height: 120px; opacity: 0.55; }
+  .historia-item p { font-size: 0.9rem; }
 }
 
 /* ========== CEREMONIA ========== */
