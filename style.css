@@ -32,6 +32,8 @@
   --tipografia-manuscrita-brand: 'Allura', cursive;
   --tipografia-fecha: 'Cormorant Garamond', serif;
   --tipografia-ampersand: 'Playfair Display', serif;
+   --tipografia-manuscrita: 'Dancing Script', cursive;
+  --tipografia-manuscrita-brand: 'Allura', cursive;
 }
 
 /* ========== GLOBAL ========== */
@@ -3653,3 +3655,4 @@ body {
     font-size: 0.8rem;         /* ← Tamaño de iconos */
   }
 }
+
