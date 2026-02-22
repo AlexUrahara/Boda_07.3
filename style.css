@@ -3626,8 +3626,8 @@ body {
     padding: 1rem 0.5rem;
   }
   .padrinos-descripcion {
-    font-size: 0.9rem;         /* Descripción más pequeña */
-    margin-bottom: 1.2rem;
+    font-size: 1.2rem;         /* Descripción más pequeña */
+    margin-bottom: 2rem;
   }
   .padrinos-bloque {
     display: flex;
@@ -3648,7 +3648,7 @@ body {
     margin-bottom: 0.3rem;
   }
   .padrino-nombre {
-    font-size: 1.2rem;           /* ← Tamaño del nombre */
+    font-size: 1.3rem;           /* ← Tamaño del nombre */
     margin-bottom: 0.3rem;
   }
   .padrino-redes {
