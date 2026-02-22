@@ -3312,11 +3312,36 @@ body {
 
 /* ========== SECCIÓN PADRINOS ========== */
 .padrinos-section {
+  position: relative;           /* Para posicionar las imágenes decorativas */
   background-color: var(--blanco);
   padding: 4rem 0;
   overflow: hidden;
 }
 
+/* Imágenes decorativas superiores (ocultas en escritorio por defecto) */
+.padrino-decor {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  pointer-events: none;
+  display: none;                /* Ocultas en escritorio */
+}
+
+.padrino-decor.superior-izquierda {
+  left: 0;
+}
+
+.padrino-decor.superior-derecha {
+  right: 0;
+}
+
+.padrino-decor img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Título y descripción */
 .padrinos-section .section-title {
   text-align: center;
   margin-bottom: 1rem;
@@ -3334,7 +3359,7 @@ body {
   opacity: 0.9;
 }
 
-/* Bloques de padrinos */
+/* Bloques de padrinos: contenedores flex */
 .padrinos-bloque {
   display: flex;
   flex-wrap: wrap;
@@ -3349,7 +3374,7 @@ body {
 
 /* Tarjeta de cada padrino */
 .padrino-card {
-  flex: 0 1 180px; /* Base para móvil, se ajusta en media queries */
+  flex: 0 1 180px;              /* Tamaño base para móvil */
   text-align: center;
   opacity: 0;
   transform: translateY(30px);
@@ -3372,9 +3397,10 @@ body {
   100% { transform: translateY(0); }
 }
 
+/* Wrapper de imagen (círculo) */
 .padrino-imagen-wrapper {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto 1rem;
@@ -3390,6 +3416,7 @@ body {
   display: block;
 }
 
+/* Nombre del padrino */
 .padrino-nombre {
   font-family: var(--tipografia-manuscrita);
   font-size: 1.4rem;
@@ -3398,6 +3425,7 @@ body {
   line-height: 1.2;
 }
 
+/* Redes sociales */
 .padrino-redes {
   display: flex;
   justify-content: center;
@@ -3415,34 +3443,7 @@ body {
   transform: scale(1.2);
 }
 
-/* ===== SECCIÓN PADRINOS A PANTALLA COMPLETA ===== */
-.padrinos-section {
-  min-height: 90vh;           /* Ocupa al menos toda la altura de la ventana */
-  display: flex;               /* Activa flexbox en la sección */
-  flex-direction: column;      /* Coloca los elementos en columna */
-  justify-content: center;     /* Centra verticalmente el contenido */
-  box-sizing: border-box;      /* Incluye padding en el cálculo de altura */
-}
-
-/* Ajuste fino para que el contenido no quede pegado a los bordes */
-.padrinos-section .container {
-  width: 100%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-/* Si deseas que los bloques de padrinos también tengan un poco de separación */
-.padrinos-bloque {
-  margin-bottom: 0;            /* Elimina el margen inferior del último bloque */
-}
-
-.padrinos-bloque:last-child {
-  margin-bottom: 0;
-}
-
-
-/* ========== SECCIÓN PADRINOS – MEDIA QUERIES OPTIMIZADOS ========== */
-/* Unidades relativas (rem) para mejor escalado con preferencias de usuario */
+/* ========== MEDIA QUERIES (UNIDADES RELATIVAS) ========== */
 
 /* Pantallas grandes (≥992px) – 6 columnas en una fila */
 @media (min-width: 62em) { /* 992px / 16 = 62em */
@@ -3454,36 +3455,31 @@ body {
     margin-bottom: 3rem;
   }
   .padrinos-bloque {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
+    flex-wrap: nowrap;          /* Una sola fila */
     gap: 1.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0;           /* Sin margen inferior */
   }
   .padrino-card {
-    flex: 1 1 0;               /* Ocupan el mismo ancho */
-    min-width: 0;               /* Evita desbordes */
-    max-width: 14rem;           /* Controla el tamaño máximo (aprox 224px) */
+    flex: 1 1 0;                /* Mismo ancho */
+    max-width: 14rem;           /* Controla el tamaño máximo */
   }
   .padrino-imagen-wrapper {
-    width: 100%;
-    aspect-ratio: 1/1;
-    border-width: 0.25rem;
+    border-width: 0.25rem;      /* 4px aprox */
     margin-bottom: 1rem;
   }
   .padrino-nombre {
-    font-size: 1.5rem;          /* 24px aprox */
-    margin-bottom: 0.5rem;
-  }
-  .padrino-redes {
-    gap: 0.8rem;
+    font-size: 1.5rem;          /* 24px */
   }
   .red-social {
     font-size: 1.3rem;
   }
+  /* Imágenes decorativas: ocultas en escritorio */
+  .padrino-decor {
+    display: none;
+  }
 }
 
-/* Tablets grandes (de 769px a 991px) – 3 columnas por fila */
+/* Tablets grandes (769px a 991px) – 3 columnas por fila */
 @media (max-width: 61.9375em) and (min-width: 48.0625em) { /* 991px a 769px */
   .padrinos-section {
     padding: 3rem 0;
@@ -3493,20 +3489,14 @@ body {
     margin-bottom: 2.5rem;
   }
   .padrinos-bloque {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 2rem;
     margin-bottom: 2rem;
   }
   .padrino-card {
-    flex: 0 1 calc(33.333% - 2rem); /* 3 columnas con gap */
-    max-width: 14rem;                 /* Limita el ancho */
-    min-width: 9rem;                  /* Evita que se hagan muy pequeños */
+    flex: 0 1 calc(33.333% - 2rem); /* 3 columnas con gap de 2rem */
+    max-width: 14rem;
   }
   .padrino-imagen-wrapper {
-    width: 100%;
-    aspect-ratio: 1/1;
     border-width: 0.25rem;
     margin-bottom: 0.8rem;
   }
@@ -3515,6 +3505,18 @@ body {
   }
   .red-social {
     font-size: 1.2rem;
+  }
+  /* Imágenes decorativas visibles en tablets */
+  .padrino-decor {
+    display: block;
+  }
+  .padrino-decor.superior-izquierda img {
+    width: 120px;                /* 🌟 Ajusta tamaño imagen izquierda */
+    opacity: 0.6;                /* 🌟 Ajusta opacidad */
+  }
+  .padrino-decor.superior-derecha img {
+    width: 120px;                /* 🌟 Ajusta tamaño imagen derecha */
+    opacity: 0.6;
   }
 }
 
@@ -3528,21 +3530,15 @@ body {
     margin-bottom: 2rem;
   }
   .padrinos-bloque {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 1.5rem;
     margin-bottom: 2rem;
   }
   .padrino-card {
     flex: 0 1 calc(33.333% - 1.5rem);
     max-width: 12rem;
-    min-width: 8rem;
   }
   .padrino-imagen-wrapper {
-    width: 100%;
-    aspect-ratio: 1/1;
-    border-width: 0.2rem;
+    border-width: 0.2rem;        /* ~3px */
     margin-bottom: 0.7rem;
   }
   .padrino-nombre {
@@ -3550,6 +3546,18 @@ body {
   }
   .red-social {
     font-size: 1.1rem;
+  }
+  /* Imágenes decorativas */
+  .padrino-decor {
+    display: block;
+  }
+  .padrino-decor.superior-izquierda img {
+    width: 100px;
+    opacity: 0.5;
+  }
+  .padrino-decor.superior-derecha img {
+    width: 100px;
+    opacity: 0.5;
   }
 }
 
@@ -3563,20 +3571,14 @@ body {
     margin-bottom: 1.8rem;
   }
   .padrinos-bloque {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 1rem;
     margin-bottom: 1.8rem;
   }
   .padrino-card {
     flex: 0 1 calc(33.333% - 1rem);
     max-width: 11rem;
-    min-width: 7rem;
   }
   .padrino-imagen-wrapper {
-    width: 100%;
-    aspect-ratio: 1/1;
     border-width: 0.2rem;
     margin-bottom: 0.6rem;
   }
@@ -3585,6 +3587,18 @@ body {
   }
   .red-social {
     font-size: 1rem;
+  }
+  /* Imágenes decorativas */
+  .padrino-decor {
+    display: block;
+  }
+  .padrino-decor.superior-izquierda img {
+    width: 90px;
+    opacity: 0.5;
+  }
+  .padrino-decor.superior-derecha img {
+    width: 90px;
+    opacity: 0.5;
   }
 }
 
@@ -3599,21 +3613,15 @@ body {
     padding: 0 0.5rem;
   }
   .padrinos-bloque {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 0.8rem;
     margin-bottom: 1.5rem;
   }
   .padrino-card {
     flex: 0 1 calc(33.333% - 0.8rem);
     max-width: 10rem;
-    min-width: 6.5rem;
   }
   .padrino-imagen-wrapper {
-    width: 100%;
-    aspect-ratio: 1/1;
-    border-width: 0.15rem;
+    border-width: 0.15rem;       /* ~2.4px */
     margin-bottom: 0.5rem;
   }
   .padrino-nombre {
@@ -3625,6 +3633,18 @@ body {
   }
   .red-social {
     font-size: 0.95rem;
+  }
+  /* Imágenes decorativas */
+  .padrino-decor {
+    display: block;
+  }
+  .padrino-decor.superior-izquierda img {
+    width: 80px;
+    opacity: 0.4;
+  }
+  .padrino-decor.superior-derecha img {
+    width: 80px;
+    opacity: 0.4;
   }
 }
 
@@ -3639,21 +3659,15 @@ body {
     padding: 0 0.3rem;
   }
   .padrinos-bloque {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 0.5rem;
     margin-bottom: 1.2rem;
   }
   .padrino-card {
     flex: 0 1 calc(33.333% - 0.5rem);
     max-width: 8.5rem;
-    min-width: 5.5rem;
   }
   .padrino-imagen-wrapper {
-    width: 100%;
-    aspect-ratio: 1/1;
-    border-width: 0.125rem;
+    border-width: 0.125rem;      /* 2px */
     margin-bottom: 0.4rem;
   }
   .padrino-nombre {
@@ -3665,5 +3679,17 @@ body {
   }
   .red-social {
     font-size: 0.8rem;
+  }
+  /* Imágenes decorativas */
+  .padrino-decor {
+    display: block;
+  }
+  .padrino-decor.superior-izquierda img {
+    width: 70px;
+    opacity: 0.4;
+  }
+  .padrino-decor.superior-derecha img {
+    width: 70px;
+    opacity: 0.4;
   }
 }
