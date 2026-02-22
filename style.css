@@ -3440,39 +3440,51 @@ body {
   margin-bottom: 0;
 }
 
-/* ========== MEDIA QUERIES (basadas en la sección novios) ========== */
 
-/* Pantallas grandes (≥992px) - 6 columnas */
-@media (min-width: 992px) {
-  .padrinos-section .container {
-    max-width: 1200px;
+/* ========== SECCIÓN PADRINOS – MEDIA QUERIES OPTIMIZADOS ========== */
+/* Unidades relativas (rem) para mejor escalado con preferencias de usuario */
+
+/* Pantallas grandes (≥992px) – 6 columnas en una fila */
+@media (min-width: 62em) { /* 992px / 16 = 62em */
+  .padrinos-section {
+    padding: 4rem 0;
+  }
+  .padrinos-descripcion {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
   }
   .padrinos-bloque {
+    display: flex;
     flex-wrap: nowrap;
+    justify-content: center;
     gap: 1.5rem;
     margin-bottom: 0;
   }
   .padrino-card {
-    flex: 1 1 0; /* que ocupen el mismo ancho */
-    min-width: 0;
+    flex: 1 1 0;               /* Ocupan el mismo ancho */
+    min-width: 0;               /* Evita desbordes */
+    max-width: 14rem;           /* Controla el tamaño máximo (aprox 224px) */
   }
-  .padrinos-descripcion {
-    font-size: 1.3rem;
-    margin-bottom: 3.5rem;
+  .padrino-imagen-wrapper {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-width: 0.25rem;
+    margin-bottom: 1rem;
   }
   .padrino-nombre {
-    font-size: 1.6rem;
+    font-size: 1.5rem;          /* 24px aprox */
+    margin-bottom: 0.5rem;
+  }
+  .padrino-redes {
+    gap: 0.8rem;
   }
   .red-social {
     font-size: 1.3rem;
   }
-  .padrino-imagen-wrapper {
-    border-width: 4px;
-  }
 }
 
-/* Pantallas de 991px a 769px (tablets grandes) */
-@media (max-width: 991px) and (min-width: 769px) {
+/* Tablets grandes (de 769px a 991px) – 3 columnas por fila */
+@media (max-width: 61.9375em) and (min-width: 48.0625em) { /* 991px a 769px */
   .padrinos-section {
     padding: 3rem 0;
   }
@@ -3481,111 +3493,108 @@ body {
     margin-bottom: 2.5rem;
   }
   .padrinos-bloque {
-    gap: 1.8rem;
-    margin-bottom: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
   }
   .padrino-card {
-    flex: 0 1 200px;
+    flex: 0 1 calc(33.333% - 2rem); /* 3 columnas con gap */
+    max-width: 14rem;                 /* Limita el ancho */
+    min-width: 9rem;                  /* Evita que se hagan muy pequeños */
+  }
+  .padrino-imagen-wrapper {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-width: 0.25rem;
+    margin-bottom: 0.8rem;
   }
   .padrino-nombre {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   .red-social {
     font-size: 1.2rem;
   }
-  .padrino-imagen-wrapper {
-    width: 180px;
-    height: 180px;
-  }
 }
 
-/* Pantallas de 768px a 577px (tablets pequeñas) */
-@media (max-width: 768px) and (min-width: 577px) {
+/* Tablets pequeñas (577px a 768px) – 3 columnas */
+@media (max-width: 48em) and (min-width: 36.0625em) { /* 768px a 577px */
   .padrinos-section {
     padding: 2.5rem 0;
   }
   .padrinos-descripcion {
-    font-size: 1.1rem;        /* Ajusta tamaño de la descripción */
+    font-size: 1.1rem;
     margin-bottom: 2rem;
   }
   .padrinos-bloque {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;               /* ← Cambia aquí la separación entre padrinos */
+    gap: 1.5rem;
     margin-bottom: 2rem;
   }
   .padrino-card {
-    flex: 0 1 calc(33.33% - 1.5rem); /* 3 columnas con gap de 1.5rem */
-    max-width: 200px;          /* Límite máximo de la tarjeta (ajusta según prefieras) */
-    min-width: 150px;          /* Ancho mínimo para que no se deformen */
+    flex: 0 1 calc(33.333% - 1.5rem);
+    max-width: 12rem;
+    min-width: 8rem;
   }
   .padrino-imagen-wrapper {
-    width: 100%;               /* Se adapta al ancho de la tarjeta */
-    aspect-ratio: 1/1;         /* Mantiene la imagen cuadrada */
-    border-width: 3px;         /* Grosor del borde */
-    margin-bottom: 0.8rem;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-width: 0.2rem;
+    margin-bottom: 0.7rem;
   }
   .padrino-nombre {
-    font-size: 1.4rem;         /* ← Tamaño del nombre (ajusta aquí) */
-    margin-bottom: 0.5rem;
-  }
-  .padrino-redes {
-    gap: 0.8rem;               /* ← Separación entre iconos (ajusta aquí) */
+    font-size: 1.3rem;
   }
   .red-social {
-    font-size: 1.2rem;         /* ← Tamaño de los iconos (ajusta aquí) */
-    margin-bottom: 30px;
+    font-size: 1.1rem;
   }
 }
 
-/* Pantallas de 576px a 481px (móviles grandes) */
-@media (max-width: 576px) and (min-width: 481px) {
+/* Móviles grandes (481px a 576px) – 3 columnas */
+@media (max-width: 36em) and (min-width: 30.0625em) { /* 576px a 481px */
   .padrinos-section {
     padding: 2rem 1rem;
   }
   .padrinos-descripcion {
-    font-size: 1rem;           /* Ajusta tamaño de la descripción */
+    font-size: 1rem;
     margin-bottom: 1.8rem;
   }
   .padrinos-bloque {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;                 /* ← Cambia aquí la separación entre padrinos */
-    margin-bottom: 2rem;
+    gap: 1rem;
+    margin-bottom: 1.8rem;
   }
   .padrino-card {
-    flex: 0 1 calc(33.33% - 1rem); /* 3 columnas con gap de 1rem */
-    max-width: 170px;          /* Límite máximo */
-    min-width: 130px;          /* Ancho mínimo */
+    flex: 0 1 calc(33.333% - 1rem);
+    max-width: 11rem;
+    min-width: 7rem;
   }
   .padrino-imagen-wrapper {
     width: 100%;
     aspect-ratio: 1/1;
-    border-width: 3px;
-    margin-bottom: 0.7rem;
+    border-width: 0.2rem;
+    margin-bottom: 0.6rem;
   }
   .padrino-nombre {
-    font-size: 1.3rem;         /* ← Tamaño del nombre */
-    margin-bottom: 0.4rem;
-  }
-  .padrino-redes {
-    gap: 0.7rem;               /* ← Separación entre iconos */
+    font-size: 1.2rem;
   }
   .red-social {
-    font-size: 1.1rem;         /* ← Tamaño de los iconos */
-    margin-bottom: 50px;
+    font-size: 1rem;
   }
 }
 
-/* Pantallas de 480px a 394px (móviles medianos) */
-@media (max-width: 480px) and (min-width: 394px) {
+/* Móviles medianos (394px a 480px) – 3 columnas */
+@media (max-width: 30em) and (min-width: 24.625em) { /* 480px a 394px */
   .padrinos-section {
     padding: 1.5rem 0.5rem;
   }
   .padrinos-descripcion {
-    font-size: 1.2rem;           /* Ajusta descripción */
+    font-size: 0.95rem;
     margin-bottom: 1.5rem;
     padding: 0 0.5rem;
   }
@@ -3593,71 +3602,68 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;                 /* ← Separación entre padrinos */
+    gap: 0.8rem;
     margin-bottom: 1.5rem;
   }
   .padrino-card {
-    flex: 0 1 calc(33.33% - 1rem); /* 3 columnas */
-    max-width: 140px;          /* Ancho máximo de la tarjeta */
-    min-width: 100px;          /* Ancho mínimo */
+    flex: 0 1 calc(33.333% - 0.8rem);
+    max-width: 10rem;
+    min-width: 6.5rem;
   }
   .padrino-imagen-wrapper {
     width: 100%;
     aspect-ratio: 1/1;
-    border-width: 3px;         /* Borde de la imagen */
+    border-width: 0.15rem;
     margin-bottom: 0.5rem;
   }
   .padrino-nombre {
-    font-size: 1.1rem;         /* ← Tamaño del nombre */
+    font-size: 1.1rem;
     margin-bottom: 0.4rem;
   }
   .padrino-redes {
-    gap: 0.8rem;               /* ← Separación entre iconos */
+    gap: 0.5rem;
   }
   .red-social {
-    font-size: 1.1rem;           /* ← Tamaño de iconos */
-    margin-bottom: 35px;
+    font-size: 0.95rem;
   }
 }
 
-/* Pantallas de 393px o menos (móviles pequeños) */
-@media (max-width: 393px) {
+/* Móviles pequeños (≤393px) – 3 columnas */
+@media (max-width: 24.5625em) { /* 393px */
   .padrinos-section {
     padding: 1rem 0.5rem;
   }
   .padrinos-descripcion {
-    font-size: 1.4rem;         /* Descripción más pequeña */
-    margin-bottom: 3rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    padding: 0 0.3rem;
   }
   .padrinos-bloque {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;               /* ← Separación mínima entre padrinos */
+    gap: 0.5rem;
     margin-bottom: 1.2rem;
   }
   .padrino-card {
-    flex: 0 1 calc(33.33% - 0.5rem); /* 3 columnas con gap de 0.5rem */
-    max-width: 110px;          /* Ajuste para que quepan tres */
-    min-width: 80px;           /* Ancho mínimo */
+    flex: 0 1 calc(33.333% - 0.5rem);
+    max-width: 8.5rem;
+    min-width: 5.5rem;
   }
   .padrino-imagen-wrapper {
     width: 100%;
     aspect-ratio: 1/1;
-    border-width: 2px;         /* Borde más delgado */
-    margin-bottom: 0.3rem;
+    border-width: 0.125rem;
+    margin-bottom: 0.4rem;
   }
   .padrino-nombre {
-    font-size: 1.2rem;           /* ← Tamaño del nombre */
+    font-size: 1rem;
     margin-bottom: 0.3rem;
   }
   .padrino-redes {
-    gap: 0.35rem;               /* ← Separación entre iconos */
+    gap: 0.3rem;
   }
   .red-social {
-    font-size: 1rem;         /* ← Tamaño de iconos */
-    padding: 2px;
-    margin-bottom: 30px;
+    font-size: 0.8rem;
   }
 }
-
