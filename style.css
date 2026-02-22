@@ -3612,11 +3612,11 @@ body {
     margin-bottom: 0.4rem;
   }
   .padrino-redes {
-    gap: 0.6rem;               /* ← Separación entre iconos */
+    gap: 0.8rem;               /* ← Separación entre iconos */
   }
   .red-social {
-    font-size: 1rem;           /* ← Tamaño de iconos */
-    margin-bottom: 50px;
+    font-size: 1.1rem;           /* ← Tamaño de iconos */
+    margin-bottom: 35px;
   }
 }
 
