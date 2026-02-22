@@ -525,3 +525,29 @@ document.addEventListener('DOMContentLoaded', function() {
   // ... tu código existente ...
   initNoviosObserver();
 });
+// ===== INTERSECTION OBSERVER PARA LA SECCIÓN PADRINOS =====
+function initPadrinosObserver() {
+  const padrinosCards = document.querySelectorAll('.padrino-card');
+  if (!padrinosCards.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible'); // Oculta al salir
+      }
+    });
+  }, {
+    threshold: 0.3,
+    rootMargin: '0px'
+  });
+
+  padrinosCards.forEach(card => observer.observe(card));
+}
+
+// Llama a esta función dentro de DOMContentLoaded, junto a las demás
+document.addEventListener('DOMContentLoaded', function() {
+  // ... tu código existente ...
+  initPadrinosObserver();
+});
