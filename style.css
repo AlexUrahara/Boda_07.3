@@ -3626,8 +3626,8 @@ body {
     padding: 1rem 0.5rem;
   }
   .padrinos-descripcion {
-    font-size: 1.2rem;         /* Descripción más pequeña */
-    margin-bottom: 2rem;
+    font-size: 1.4rem;         /* Descripción más pequeña */
+    margin-bottom: 3rem;
   }
   .padrinos-bloque {
     display: flex;
@@ -3648,15 +3648,16 @@ body {
     margin-bottom: 0.3rem;
   }
   .padrino-nombre {
-    font-size: 1.3rem;           /* ← Tamaño del nombre */
+    font-size: 1.2rem;           /* ← Tamaño del nombre */
     margin-bottom: 0.3rem;
   }
   .padrino-redes {
     gap: 0.35rem;               /* ← Separación entre iconos */
   }
   .red-social {
-    font-size: 0.9rem;         /* ← Tamaño de iconos */
-    margin-bottom: 50px;
+    font-size: 1rem;         /* ← Tamaño de iconos */
+    padding: 2px;
+    margin-bottom: 30px;
   }
 }
 
