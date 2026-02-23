@@ -425,12 +425,12 @@ function initMusica() {
   };
 
   // Esperar a que el audio esté listo
-  if (audio.readyState >= 2) {
-    attemptAutoPlay();
-  } else {
-    audio.addEventListener('canplay', attemptAutoPlay, { once: true });
-  }
-
+// Esperar a que el audio esté listo (sin autoplay)
+// if (audio.readyState >= 2) {
+//   attemptAutoPlay();
+// } else {
+//   audio.addEventListener('canplay', attemptAutoPlay, { once: true });
+// }
   // Forzar carga
   audio.load();
 }
