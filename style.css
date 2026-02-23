@@ -967,20 +967,11 @@ body {
   }
 }
 
-
-
-
-
-
-
 /* ========== NUESTRA HISTORIA ========== */
 .historia-section {
   background-color: var(--blanco);
   overflow: hidden;
-}
-/* ===== FLOR DECORATIVA EN HISTORIA (ESQUINA SUPERIOR DERECHA) ===== */
-.historia-section {
-  position: relative; /* Necesario para posicionar la flor */
+  position: relative;
 }
 
 .historia-section::after {
@@ -988,19 +979,15 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  width: 180px;        /* 🌟 TAMAÑO EN ESCRITORIO (ajusta aquí) */
-  height: 180px;       /* 🌟 TAMAÑO EN ESCRITORIO (ajusta aquí) */
+  width: 180px;
+  height: 180px;
   background-image: url('imagenes/flor03.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top right;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.5;        /* 🌟 OPACIDAD EN ESCRITORIO (0 = transparente, 1 = sólido) */
-}
-/* ===== IMAGEN DECORATIVA IZQUIERDA EN HISTORIA (SUPERIOR) ===== */
-.historia-section {
-  position: relative; /* Asegura que los pseudoelementos se posicionen respecto a la sección */
+  opacity: 0.5;
 }
 
 .historia-section::before {
@@ -1008,68 +995,15 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 180px;               /* 🌟 TAMAÑO EN ESCRITORIO */
-  height: 180px;              /* 🌟 TAMAÑO EN ESCRITORIO */
-  background-image: url('imagenes/lineas01.png'); /* Cambia por tu imagen */
+  width: 180px;
+  height: 180px;
+  background-image: url('imagenes/lineas01.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top left;
   pointer-events: none;
   z-index: 1;
   margin-top: -1px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 992px) {
-  .historia-section::before {
-    width: 150px;
-    height: 150px;
-    margin-top: -1px;
-  }
-}
-
-@media (max-width: 768px) {
-  .historia-section::before {
-    width: 120px;
-    height: 117px;
-    margin-top: -1;
-  }
-}
-
-@media (max-width: 576px) {
-  .historia-section::before {
-    width: 90px;
-    height: 88.5px;  
-    margin-top: -1;
-  }
-}
-
-/* ===== RESPONSIVE ===== */
-/* 📱 Tablet (max-width: 992px) */
-@media (max-width: 992px) {
-  .historia-section::after {
-    width: 140px;      /* 🌟 TAMAÑO EN TABLET */
-    height: 140px;
-    opacity: 0.4;
-  }
-}
-
-/* 📱 Móvil grande (max-width: 768px) */
-@media (max-width: 768px) {
-  .historia-section::after {
-    width: 120px;      /* 🌟 TAMAÑO EN MÓVIL GRANDE */
-    height: 120px;
-    opacity: 0.3;
-  }
-}
-
-/* 📱 Móvil pequeño (max-width: 576px) */
-@media (max-width: 576px) {
-  .historia-section::after {
-    width: 100px;      /* 🌟 TAMAÑO EN MÓVIL PEQUEÑO */
-    height: 100px;
-    opacity: 0.25;
-  }
 }
 
 .historia-grid {
@@ -1095,7 +1029,6 @@ body {
 
 .historia-item:hover {
   transform: translateY(-5px);
-  background: none !important;
 }
 
 .historia-divider {
@@ -1136,9 +1069,6 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
 }
 
 .historia-imagen {
@@ -1156,47 +1086,73 @@ body {
   transform: scale(1);
 }
 
-.historia-section::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 180px;
-  height: 180px;
-  background-image: url('imagenes/flor03.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top right;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.5;
-}
-
-/* === MEDIA QUERIES DE HISTORIA AJUSTADOS SEGÚN VESTIMENTA === */
-@media (max-width: 992px) {
-  .historia-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .historia-imagen { max-width: 580px; }
-  .historia-section::after { width: 160px; height: 160px; opacity: 0.54; }
-  /* Tamaños de fuente desde vestimenta */
-  .historia-item h3 { font-size: 1.8rem; }
-  .historia-item p { font-size: 0.95rem; }
+/* Media queries de Historia basados en Vestimenta */
+@media (max-width: 991px) {
+  .historia-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .historia-imagen {
+    max-width: 580px;
+  }
+  .historia-item h3 {
+    font-size: 1.8rem; /* como vestimenta h3 en 991px */
+  }
+  .historia-item p {
+    font-size: 0.95rem; /* como vestimenta p en 991px */
+  }
+  .historia-section::after,
+  .historia-section::before {
+    width: 140px;
+    height: 140px;
+    opacity: 0.4;
+  }
 }
 
 @media (max-width: 768px) {
-  .historia-imagen { max-width: 480px; }
-  .historia-item h3 { font-size: 2.2rem; } /* antes 1.3rem */
-  .historia-divider { width: 50px; }
-  .historia-section::after { width: 150px; height: 150px; opacity: 0.53; }
-  .historia-item p { font-size: 0.95rem; }
+  .historia-imagen {
+    max-width: 480px;
+  }
+  .historia-item h3 {
+    font-size: 2.2rem; /* como vestimenta h3 en 768px */
+  }
+  .historia-item p {
+    font-size: 0.95rem; /* se mantiene */
+  }
+  .historia-divider {
+    width: 50px;
+  }
+  .historia-section::after,
+  .historia-section::before {
+    width: 120px;
+    height: 120px;
+    opacity: 0.3;
+  }
 }
 
 @media (max-width: 576px) {
-  .historia-imagen { max-width: 400px; }
-  .historia-item h3 { font-size: 1.9rem; } /* antes 1.2rem */
-  .historia-divider { width: 40px; margin-left: 20px; }
-  .historia-item { padding: 25px; }
-  .historia-section::after { width: 120px; height: 120px; opacity: 0.55; }
-  .historia-item p { font-size: 0.9rem; }
+  .historia-imagen {
+    max-width: 400px;
+  }
+  .historia-item h3 {
+    font-size: 1.9rem; /* como vestimenta h3 en 576px */
+  }
+  .historia-item p {
+    font-size: 0.9rem; /* como vestimenta p en 576px */
+  }
+  .historia-divider {
+    width: 40px;
+    margin-left: 20px;
+  }
+  .historia-item {
+    padding: 25px;
+  }
+  .historia-section::after,
+  .historia-section::before {
+    width: 100px;
+    height: 100px;
+    opacity: 0.25;
+  }
 }
 
 /* ========== CEREMONIA ========== */
@@ -3316,15 +3272,6 @@ body {
 }
 }
 
-
-
-
-
-
-
-
-
-
 /* ========== SECCIÓN PADRINOS – COMPLETA ========== */
 
 /* Contenedor principal de la sección */
@@ -3492,60 +3439,14 @@ body {
   transform: scale(1.2);
 }
 
-/* ========== MEDIA QUERIES ========== */
-/* Todos los valores en rem para escalar con preferencias del usuario (1rem ≈ 16px) */
+/* ========== MEDIA QUERIES DE PADRINOS (basados en Vestimenta) ========== */
 
-/* Pantallas grandes (≥992px) – 6 columnas en una fila */
-@media (min-width: 62em) {
-  .padrinos-section {
-    padding: 4rem 0;
-  }
-  .padrinos-descripcion {
-    font-size: 1.3rem;
-    margin-bottom: 3rem;
-  }
-  .padrinos-bloque {
-    gap: 1.5rem;
-    flex-wrap: nowrap;           /* Fuerza una sola fila */
-    margin-bottom: 0;
-  }
-  .padrino-card {
-    flex: 1 1 0;                 /* Todas las tarjetas ocupan el mismo ancho */
-    min-width: 0;
-    max-width: 14rem;            /* Limita el tamaño máximo (aprox 224px) */
-  }
-  .padrino-imagen-wrapper {
-    border-width: 0.25rem;       /* 4px */
-    margin-bottom: 1rem;
-  }
-  .padrino-nombre {
-    font-size: 1.5rem;           /* 24px */
-    margin-bottom: 0.5rem;
-  }
-  .padrino-redes {
-    gap: 0.8rem;
-  }
-  .red-social {
-    font-size: 1.3rem;           /* 21px */
-  }
-  /* Imagen inferior centrada */
-  .padrino-imagen-inferior img {
-    max-width: 300px;            /* Ajusta según tu imagen */
-    opacity: 0.8;
-  }
-  /* Decoraciones superiores ocultas en escritorio */
-  .padrino-decor {
-    display: none;
-  }
-}
-
-/* Tablets grandes (769px a 991px) – 3 columnas por fila */
-@media (max-width: 61.9375em) and (min-width: 48.0625em) {
+@media (max-width: 991px) {
   .padrinos-section {
     padding: 3rem 0;
   }
   .padrinos-descripcion {
-    font-size: 1.2rem;
+    font-size: 1.1rem;           /* como vestimenta-intro en 991px */
     margin-bottom: 2.5rem;
   }
   .padrinos-bloque {
@@ -3553,7 +3454,7 @@ body {
     margin-bottom: 2rem;
   }
   .padrino-card {
-    flex: 0 1 calc(33.333% - 2rem); /* 3 columnas con gap */
+    flex: 0 1 calc(33.333% - 2rem);
     max-width: 14rem;
     min-width: 9rem;
   }
@@ -3562,10 +3463,13 @@ body {
     margin-bottom: 0.8rem;
   }
   .padrino-nombre {
-    font-size: 1.4rem;
+    font-size: 1.8rem;           /* como vestimenta h3 en 991px */
+  }
+  .padrino-redes {
+    gap: 0.8rem;
   }
   .red-social {
-    font-size: 1.2rem;
+    font-size: 1.2rem;           /* tamaño de icono similar a párrafo? ajustado */
   }
   /* Imagen inferior */
   .padrino-imagen-inferior img {
@@ -3577,8 +3481,8 @@ body {
     display: block;
   }
   .padrino-decor.superior-izquierda img {
-    width: 120px;                /* 🌟 Ajusta tamaño aquí */
-    opacity: 0.6;                /* 🌟 Ajusta opacidad aquí */
+    width: 120px;
+    opacity: 0.6;
   }
   .padrino-decor.superior-derecha img {
     width: 120px;
@@ -3586,13 +3490,12 @@ body {
   }
 }
 
-/* Tablets pequeñas (577px a 768px) – 3 columnas */
-@media (max-width: 48em) and (min-width: 36.0625em) {
+@media (max-width: 768px) {
   .padrinos-section {
     padding: 2.5rem 0;
   }
   .padrinos-descripcion {
-    font-size: 1.1rem;
+    font-size: 1.1rem;           /* se mantiene */
     margin-bottom: 2rem;
   }
   .padrinos-bloque {
@@ -3609,7 +3512,7 @@ body {
     margin-bottom: 0.7rem;
   }
   .padrino-nombre {
-    font-size: 1.3rem;
+    font-size: 2.2rem;           /* como vestimenta h3 en 768px */
   }
   .red-social {
     font-size: 1.1rem;
@@ -3631,13 +3534,12 @@ body {
   }
 }
 
-/* Móviles grandes (481px a 576px) – 3 columnas */
-@media (max-width: 36em) and (min-width: 30.0625em) {
+@media (max-width: 576px) {
   .padrinos-section {
     padding: 2rem 1rem;
   }
   .padrinos-descripcion {
-    font-size: 1rem;
+    font-size: 1rem;             /* como vestimenta p? o intro? */
     margin-bottom: 1.8rem;
   }
   .padrinos-bloque {
@@ -3654,7 +3556,7 @@ body {
     margin-bottom: 0.6rem;
   }
   .padrino-nombre {
-    font-size: 1.2rem;
+    font-size: 1.9rem;           /* como vestimenta h3 en 576px */
   }
   .red-social {
     font-size: 1rem;
@@ -3673,105 +3575,5 @@ body {
   .padrino-decor.superior-derecha img {
     width: 90px;
     opacity: 0.5;
-  }
-}
-
-/* Móviles medianos (394px a 480px) – 3 columnas */
-@media (max-width: 30em) and (min-width: 24.625em) {
-  .padrinos-section {
-    padding: 1.5rem 0.5rem;
-  }
-  .padrinos-descripcion {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-    padding: 0 0.5rem;
-  }
-  .padrinos-bloque {
-    gap: 0.8rem;
-    margin-bottom: 1.5rem;
-  }
-  .padrino-card {
-    flex: 0 1 calc(33.333% - 0.8rem);
-    max-width: 10rem;
-    min-width: 6.5rem;
-  }
-  .padrino-imagen-wrapper {
-    border-width: 0.15rem;
-    margin-bottom: 0.5rem;
-  }
-  .padrino-nombre {
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
-  }
-  .padrino-redes {
-    gap: 0.5rem;
-  }
-  .red-social {
-    font-size: 0.95rem;
-  }
-  .padrino-imagen-inferior img {
-    max-width: 160px;
-    opacity: 0.5;
-  }
-  .padrino-decor {
-    display: block;
-  }
-  .padrino-decor.superior-izquierda img {
-    width: 80px;
-    opacity: 0.4;
-  }
-  .padrino-decor.superior-derecha img {
-    width: 80px;
-    opacity: 0.4;
-  }
-}
-
-/* Móviles pequeños (≤393px) – 3 columnas */
-@media (max-width: 24.5625em) {
-  .padrinos-section {
-    padding: 1rem 0.5rem;
-  }
-  .padrinos-descripcion {
-    font-size: 0.9rem;
-    margin-bottom: 1.2rem;
-    padding: 0 0.3rem;
-  }
-  .padrinos-bloque {
-    gap: 0.5rem;
-    margin-bottom: 1.2rem;
-  }
-  .padrino-card {
-    flex: 0 1 calc(33.333% - 0.5rem);
-    max-width: 8.5rem;
-    min-width: 5.5rem;
-  }
-  .padrino-imagen-wrapper {
-    border-width: 0.125rem;
-    margin-bottom: 0.4rem;
-  }
-  .padrino-nombre {
-    font-size: 1rem;
-    margin-bottom: 0.3rem;
-  }
-  .padrino-redes {
-    gap: 0.3rem;
-  }
-  .red-social {
-    font-size: 0.8rem;
-  }
-  .padrino-imagen-inferior img {
-    max-width: 130px;
-    opacity: 0.5;
-  }
-  .padrino-decor {
-    display: block;
-  }
-  .padrino-decor.superior-izquierda img {
-    width: 70px;
-    opacity: 0.4;
-  }
-  .padrino-decor.superior-derecha img {
-    width: 70px;
-    opacity: 0.4;
   }
 }
