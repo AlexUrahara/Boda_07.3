@@ -965,7 +965,7 @@ body {
     min-height: 90vh;   /* ← Aquí se define la altura, Ocupa el 90% del alto de la ventana */
     padding: 1rem 0;
   }
-}
+}/* ========== NUESTRA HISTORIA ========== */
 .historia-section {
   background-color: var(--blanco);
   overflow: hidden;
@@ -1048,19 +1048,27 @@ body {
   padding-bottom: 0.25rem;
 }
 
-/* ===== TAMAÑOS BASE (igual que Vestimenta) ===== */
+/* Títulos de historia (se mantienen) */
 .historia-item h3 {
   font-family: var(--tipografia-titulo);
-  font-size: 2rem;            /* como .vestimenta-card h3 base */
+  font-size: 2rem;
   font-weight: 400;
   margin-bottom: 0.75rem;
   color: var(--gris-oscuro);
 }
 
+/* ===== PÁRRAFOS DE HISTORIA (ahora igual a .vestimenta-intro) ===== */
 .historia-item p {
-  font-size: 1rem;            /* como .vestimenta-card p base */
-  line-height: 1.6;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;          /* base igual a vestimenta-intro */
+  font-weight: 300;
+  font-style: italic;
   color: var(--gris-oscuro);
+  line-height: 1.6;
+  max-width: 600px;            /* ligeramente menor para que no desborde */
+  margin: 0 0 1rem 0;          /* ajuste para alineación izquierda */
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-bottom: 1rem;
   opacity: 0.9;
 }
 
@@ -1086,7 +1094,7 @@ body {
   transform: scale(1);
 }
 
-/* Media queries exactos de Vestimenta */
+/* ========== MEDIA QUERIES (mismos que vestimenta) ========== */
 @media (max-width: 991px) {
   .historia-grid {
     grid-template-columns: 1fr;
@@ -1096,10 +1104,10 @@ body {
     max-width: 580px;
   }
   .historia-item h3 {
-    font-size: 1.8rem;        /* como .vestimenta-card h3 en 991px */
+    font-size: 1.8rem;
   }
   .historia-item p {
-    font-size: 0.95rem;       /* como .vestimenta-card p en 991px */
+    font-size: 1.1rem;        /* como .vestimenta-intro en 991px */
   }
   .historia-section::after,
   .historia-section::before {
@@ -1114,10 +1122,10 @@ body {
     max-width: 480px;
   }
   .historia-item h3 {
-    font-size: 2.2rem;        /* como .vestimenta-card h3 en 768px */
+    font-size: 2.2rem;
   }
   .historia-item p {
-    font-size: 0.95rem;       /* hereda de 991px (igual que vestimenta) */
+    font-size: 1.1rem;        /* se mantiene (igual que vestimenta) */
   }
   .historia-divider {
     width: 50px;
@@ -1135,10 +1143,11 @@ body {
     max-width: 400px;
   }
   .historia-item h3 {
-    font-size: 1.9rem;        /* como .vestimenta-card h3 en 576px */
+    font-size: 1.9rem;
   }
   .historia-item p {
-    font-size: 0.9rem;        /* como .vestimenta-card p en 576px */
+    font-size: 1.1rem;        /* se mantiene */
+    line-height: 1.5;
   }
   .historia-divider {
     width: 40px;
@@ -2944,7 +2953,7 @@ body {
     font-size: 1rem;
   }
 }
-/* ========== LOS NOVIOS (con estilos de Vestimenta) ========== */
+/* ========== SECCIÓN LOS NOVIOS ========== */
 .novios-section {
   background-color: var(--blanco);
   padding: 4rem 0;
@@ -2959,7 +2968,7 @@ body {
 .novios-section .section-title {
   text-align: center;
   margin-bottom: 3rem;
-  font-size: 2rem; /* igual que .section-title base (ya global) */
+  font-size: 2rem;
 }
 
 /* Bloque base (escritorio) - dos columnas */
@@ -3002,24 +3011,31 @@ body {
   order: 2;
 }
 
-/* ===== TAMAÑOS BASE (igual que Vestimenta) ===== */
+/* Títulos de novios (se mantienen como estaban) */
 .novios-titulo {
   font-family: var(--tipografia-manuscrita);
-  font-size: 2rem;            /* como .vestimenta-card h3 base */
+  font-size: 2rem;
   color: var(--amarillo-mostaza);
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
 
+/* ===== PÁRRAFOS DE DESCRIPCIÓN (ahora igual a .vestimenta-intro) ===== */
 .novios-descripcion {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;            /* como .vestimenta-card p base */
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;          /* base igual a vestimenta-intro */
+  font-weight: 300;
+  font-style: italic;
   color: var(--gris-oscuro);
-  opacity: 0.8;
   line-height: 1.6;
-  max-width: 400px;
+  max-width: 700px;            /* igual que vestimenta-intro */
+  margin: 0 0 1.5rem 0;        /* ajuste para que no tenga margen automático centrado */
+  border-bottom: 1px solid rgba(0,0,0,0.05);  /* mismo borde inferior */
+  padding-bottom: 1.5rem;      /* mismo padding */
+  opacity: 0.9;
 }
 
+/* Imágenes de novios */
 .novios-img {
   max-width: 100%;
   height: auto;
@@ -3058,7 +3074,7 @@ body {
   animation: flotarNovios 4s ease-in-out infinite;
 }
 
-/* Media queries exactos de Vestimenta (y un min-width:992px para escritorio) */
+/* ========== MEDIA QUERIES (mismos que vestimenta) ========== */
 @media (min-width: 992px) {
   .novios-section .container {
     display: grid;
@@ -3073,10 +3089,10 @@ body {
     margin-bottom: 2rem;
   }
   .novios-titulo {
-    font-size: 2.5rem;        /* respeta el diseño original en escritorio */
+    font-size: 2.5rem;
   }
   .novios-descripcion {
-    font-size: 1rem;
+    font-size: 1.3rem;        /* base */
   }
   .novios-img {
     max-height: 340px;
@@ -3100,11 +3116,11 @@ body {
     margin-bottom: 2.5rem;
   }
   .novios-titulo {
-    font-size: 1.8rem;        /* como .vestimenta-card h3 en 991px */
+    font-size: 1.8rem;
     padding: 0 12px;
   }
   .novios-descripcion {
-    font-size: 0.95rem;       /* como .vestimenta-card p en 991px */
+    font-size: 1.1rem;        /* como .vestimenta-intro en 991px */
     padding: 0 12px;
   }
   .novios-img {
@@ -3130,12 +3146,12 @@ body {
     margin-bottom: 2rem;
   }
   .novios-titulo {
-    font-size: 2.2rem;        /* como .vestimenta-card h3 en 768px */
+    font-size: 2.2rem;
     padding: 0 12px;
   }
   .novios-descripcion {
-    font-size: 0.95rem;       /* hereda de 991px (igual que vestimenta) */
-    padding: 12px;
+    font-size: 1.1rem;        /* se mantiene como en 991px (igual que vestimenta) */
+    padding: 0 12px;
   }
   .novios-img {
     max-height: 250px;
@@ -3173,11 +3189,12 @@ body {
     min-width: 0;
   }
   .novios-titulo {
-    font-size: 1.9rem;        /* como .vestimenta-card h3 en 576px */
+    font-size: 1.9rem;
   }
   .novios-descripcion {
-    font-size: 0.9rem;        /* como .vestimenta-card p en 576px */
+    font-size: 1.1rem;        /* se mantiene (igual que vestimenta) */
     line-height: 1.4;
+    padding: 0 8px;
   }
   .novios-img {
     max-height: 210px;
@@ -3189,7 +3206,6 @@ body {
     justify-content: center;
   }
 }
-
 
 /* ========== PADRINOS (con estilos de Vestimenta) ========== */
 .padrinos-section {
