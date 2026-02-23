@@ -3387,6 +3387,9 @@ body {
     max-width: 14rem;
     min-width: 9rem;
   }
+  .padrino-card {
+  flex: 0 0 calc(33.333% - (2/3)*gap);
+}
   .padrino-imagen-wrapper {
     border-width: 0.25rem;
     margin-bottom: 0.8rem;
