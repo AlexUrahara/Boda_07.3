@@ -3206,8 +3206,7 @@ body {
     justify-content: center;
   }
 }
-
-/* ========== PADRINOS (con estilos de Vestimenta) ========== */
+/* ========== SECCIÓN PADRINOS – COMPLETA ========== */
 .padrinos-section {
   position: relative;
   min-height: 100vh;
@@ -3272,21 +3271,23 @@ body {
   height: auto;
 }
 
-/* Descripción (como .vestimenta-intro) */
+/* ===== DESCRIPCIÓN (ahora igual a .vestimenta-intro) ===== */
 .padrinos-descripcion {
   font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;          /* base igual a vestimenta-intro */
+  font-weight: 300;
   font-style: italic;
-  font-size: 1.3rem;           /* como .vestimenta-intro base */
   color: var(--gris-oscuro);
-  text-align: center;
+  line-height: 1.6;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem auto;    /* centrado como en vestimenta */
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-bottom: 1.5rem;
+  text-align: center;
   opacity: 0.9;
-  line-height: 1.5;
 }
 
+/* Bloques de tarjetas */
 .padrinos-bloque {
   display: flex;
   flex-wrap: wrap;
@@ -3299,6 +3300,7 @@ body {
   margin-bottom: 0;
 }
 
+/* Tarjeta de cada padrino */
 .padrino-card {
   flex: 0 1 180px;
   text-align: center;
@@ -3340,16 +3342,16 @@ body {
   display: block;
 }
 
-/* Nombre del padrino (como .vestimenta-card h3) */
+/* Nombre del padrino (se mantiene) */
 .padrino-nombre {
   font-family: var(--tipografia-manuscrita);
-  font-size: 2rem;             /* base igual a vestimenta h3 */
+  font-size: 2rem;
   color: var(--gris-oscuro);
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
 
-/* Redes sociales (tamaño similar a .btn-ejemplo, pero iconos) */
+/* Redes sociales */
 .padrino-redes {
   display: flex;
   justify-content: center;
@@ -3358,7 +3360,7 @@ body {
 
 .red-social {
   color: var(--amarillo-mostaza);
-  font-size: 1.2rem;           /* base */
+  font-size: 1.2rem;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -3367,13 +3369,13 @@ body {
   transform: scale(1.2);
 }
 
-/* Media queries exactos de Vestimenta */
+/* ========== MEDIA QUERIES (mismos que vestimenta) ========== */
 @media (max-width: 991px) {
   .padrinos-section {
     padding: 3rem 0;
   }
   .padrinos-descripcion {
-    font-size: 1.1rem;         /* como .vestimenta-intro en 991px */
+    font-size: 1.1rem;        /* como .vestimenta-intro en 991px */
     margin-bottom: 2.5rem;
   }
   .padrinos-bloque {
@@ -3390,7 +3392,7 @@ body {
     margin-bottom: 0.8rem;
   }
   .padrino-nombre {
-    font-size: 1.8rem;         /* como .vestimenta-card h3 en 991px */
+    font-size: 1.8rem;
   }
   .red-social {
     font-size: 1.2rem;
@@ -3417,7 +3419,7 @@ body {
     padding: 2.5rem 0;
   }
   .padrinos-descripcion {
-    font-size: 1.1rem;         /* se mantiene */
+    font-size: 1.1rem;        /* se mantiene (igual que vestimenta) */
     margin-bottom: 2rem;
   }
   .padrinos-bloque {
@@ -3434,7 +3436,7 @@ body {
     margin-bottom: 0.7rem;
   }
   .padrino-nombre {
-    font-size: 2.2rem;         /* como .vestimenta-card h3 en 768px */
+    font-size: 2.2rem;
   }
   .red-social {
     font-size: 1.1rem;
@@ -3461,7 +3463,7 @@ body {
     padding: 2rem 1rem;
   }
   .padrinos-descripcion {
-    font-size: 1rem;           /* como .vestimenta-intro? en 576px no hay, usamos 1rem */
+    font-size: 1.1rem;        /* se mantiene (igual que vestimenta) */
     margin-bottom: 1.8rem;
   }
   .padrinos-bloque {
@@ -3478,7 +3480,7 @@ body {
     margin-bottom: 0.6rem;
   }
   .padrino-nombre {
-    font-size: 1.9rem;         /* como .vestimenta-card h3 en 576px */
+    font-size: 1.9rem;
   }
   .red-social {
     font-size: 1rem;
