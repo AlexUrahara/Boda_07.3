@@ -1,12 +1,14 @@
-// Cambiar navbar al hacer scroll
+// ===== INICIALIZACIÓN PRINCIPAL =====
 document.addEventListener('DOMContentLoaded', function () {
+  // Elementos del DOM
   const navbar = document.getElementById('mainNavbar');
   const hero = document.querySelector('header');
   const offcanvasElement = document.getElementById('offcanvasNavbar');
   const backToTop = document.getElementById('backToTop');
 
-  // Función para actualizar navbar según scroll
+  // ===== FUNCIONES DE NAVBAR Y BOTÓN =====
   function updateNavbar() {
+    if (!navbar || !hero) return;
     const heroBottom = hero.offsetTop + hero.offsetHeight;
     if (window.scrollY > 730) {
       navbar.classList.add('bg-white');
@@ -17,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Mostrar/ocultar botón volver arriba
   function toggleBackToTop() {
+    if (!backToTop) return;
     if (window.scrollY > 300) {
       backToTop.classList.add('visible');
     } else {
@@ -26,43 +28,70 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Inicializar estado
-  navbar.classList.add('bg-transparent');
+  // Estado inicial
+  if (navbar) navbar.classList.add('bg-transparent');
   updateNavbar();
   toggleBackToTop();
 
-  // Escuchar scroll
+  // Evento scroll
   window.addEventListener('scroll', function() {
     updateNavbar();
     toggleBackToTop();
   });
 
   // Cerrar offcanvas al hacer clic en enlace
-  const navLinks = document.querySelectorAll('.offcanvas-body .nav-link');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function () {
-      const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
-      if (offcanvasInstance) {
-        offcanvasInstance.hide();
-      }
+  if (offcanvasElement) {
+    const navLinks = document.querySelectorAll('.offcanvas-body .nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+        if (offcanvasInstance) offcanvasInstance.hide();
+      });
     });
-  });
+  }
 
   // Botón volver arriba
-  backToTop.addEventListener('click', function() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  if (backToTop) {
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-  });
+  }
 
   // ===== INICIALIZAR PARTÍCULAS =====
   initParticles();
 
+  // ===== INICIAR CONTADOR =====
+  iniciarContador();
+
+  // ===== OBSERVER HISTORIA =====
+  initHistoriaObserver();
+
+  // ===== ITINERARIO =====
+  initTimelineObserver();
+  initCarruselItinerario();
+
+  // ===== MESA DE REGALOS =====
+  initFloatImages();
+
+  // ===== MÚSICA =====
+  initMusica();
+
+  // ===== CARRUSEL FRASE =====
+  initCarruselFrase();
+
+  // ===== RSVP FORM =====
+  initRSVPForm();
+
+  // ===== OBSERVER NOVIOS =====
+  initNoviosObserver();
+
+  // ===== OBSERVER PADRINOS =====
+  initPadrinosObserver();
+
   console.log('✨ Invitación de boda – todas las funciones cargadas');
 });
 
-// Función para crear partículas
+// ===== PARTÍCULAS =====
 function initParticles() {
   const particlesContainer = document.getElementById('particles');
   if (!particlesContainer) return;
@@ -98,16 +127,22 @@ function initParticles() {
 // ===== CONTADOR REGRESIVO =====
 function iniciarContador() {
   const fechaBoda = new Date('June 29, 2027 00:00:00').getTime();
+  const diasElem = document.getElementById('dias');
+  const horasElem = document.getElementById('horas');
+  const minutosElem = document.getElementById('minutos');
+  const segundosElem = document.getElementById('segundos');
+
+  if (!diasElem || !horasElem || !minutosElem || !segundosElem) return;
 
   function actualizarContador() {
     const ahora = new Date().getTime();
     const distancia = fechaBoda - ahora;
 
     if (distancia < 0) {
-      document.getElementById('dias').innerText = '00';
-      document.getElementById('horas').innerText = '00';
-      document.getElementById('minutos').innerText = '00';
-      document.getElementById('segundos').innerText = '00';
+      diasElem.innerText = '00';
+      horasElem.innerText = '00';
+      minutosElem.innerText = '00';
+      segundosElem.innerText = '00';
       return;
     }
 
@@ -116,10 +151,10 @@ function iniciarContador() {
     const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
     const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-    document.getElementById('dias').innerText = dias < 10 ? '0' + dias : dias;
-    document.getElementById('horas').innerText = horas < 10 ? '0' + horas : horas;
-    document.getElementById('minutos').innerText = minutos < 10 ? '0' + minutos : minutos;
-    document.getElementById('segundos').innerText = segundos < 10 ? '0' + segundos : segundos;
+    diasElem.innerText = dias < 10 ? '0' + dias : dias;
+    horasElem.innerText = horas < 10 ? '0' + horas : horas;
+    minutosElem.innerText = minutos < 10 ? '0' + minutos : minutos;
+    segundosElem.innerText = segundos < 10 ? '0' + segundos : segundos;
   }
 
   actualizarContador();
@@ -127,7 +162,7 @@ function iniciarContador() {
 }
 
 // ===== HISTORIA IMAGEN OBSERVER =====
-(function() {
+function initHistoriaObserver() {
   const imagenHistoria = document.getElementById('historiaImagen');
   if (!imagenHistoria) return;
 
@@ -141,7 +176,7 @@ function iniciarContador() {
     });
   }, { threshold: 0.7 });
   observer.observe(imagenHistoria);
-})();
+}
 
 // ===== LIGHTBOX PARA VESTIMENTA =====
 (function() {
@@ -166,6 +201,8 @@ function iniciarContador() {
   const btnCerrar = document.getElementById('lightboxCerrar');
   const btnPrev = document.getElementById('lightboxPrev');
   const btnNext = document.getElementById('lightboxNext');
+
+  if (!modal || !imagen) return;
 
   let currentGallery = [];
   let currentIndex = 0;
@@ -206,10 +243,10 @@ function iniciarContador() {
     });
   });
 
-  btnCerrar.addEventListener('click', cerrarLightbox);
-  overlay.addEventListener('click', cerrarLightbox);
-  btnPrev.addEventListener('click', () => cambiarImagen(-1));
-  btnNext.addEventListener('click', () => cambiarImagen(1));
+  if (btnCerrar) btnCerrar.addEventListener('click', cerrarLightbox);
+  if (overlay) overlay.addEventListener('click', cerrarLightbox);
+  if (btnPrev) btnPrev.addEventListener('click', () => cambiarImagen(-1));
+  if (btnNext) btnNext.addEventListener('click', () => cambiarImagen(1));
 
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
@@ -238,10 +275,9 @@ function initTimelineObserver() {
 
 // ===== CARRUSEL ITINERARIO =====
 function initCarruselItinerario() {
-  const carrusel = document.querySelector('.carrusel-flotante');
-  if (!carrusel) return;
-
   const fotos = document.querySelectorAll('.foto-carrusel');
+  if (!fotos.length) return;
+
   let index = 0;
 
   function cambiarFoto() {
@@ -253,7 +289,7 @@ function initCarruselItinerario() {
   setInterval(cambiarFoto, 4000);
 }
 
-// ===== MESA DE REGALOS – FLOTACIÓN CON RETRASOS =====
+// ===== MESA DE REGALOS – FLOTACIÓN =====
 function initFloatImages() {
   const images = document.querySelectorAll('.mesa-imagen');
   if (!images.length) return;
@@ -267,15 +303,7 @@ function initFloatImages() {
   });
 }
 
-// Iniciar todo cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', function() {
-  iniciarContador();
-  initTimelineObserver();
-  initCarruselItinerario();
-  initFloatImages();
-});
-
-// ===== REPRODUCTOR DE MÚSICA CON CONTROLES (VERSIÓN MEJORADA PARA MÓVILES) =====
+// ===== REPRODUCTOR DE MÚSICA =====
 function initMusica() {
   const playlist = [
     'musicas/paulyudin wedding valentines day.mp3',
@@ -287,12 +315,13 @@ function initMusica() {
   let isPlaying = false;
   const audio = new Audio(playlist[currentIndex]);
   audio.loop = false;
-  audio.preload = 'auto'; // Precargar el audio
+  audio.preload = 'auto';
 
-  // Elementos del DOM
   const playPauseBtn = document.getElementById('musicaPlayPause');
   const prevBtn = document.getElementById('musicaPrev');
   const nextBtn = document.getElementById('musicaNext');
+  if (!playPauseBtn || !prevBtn || !nextBtn) return;
+
   const icon = playPauseBtn.querySelector('i');
   const cancionSpan = document.getElementById('musicaCancionActual');
   const tiempoActualSpan = document.getElementById('musicaTiempoActual');
@@ -300,7 +329,6 @@ function initMusica() {
   const barraProgreso = document.getElementById('musicaBarra');
   const progresoDiv = document.getElementById('musicaProgreso');
 
-  // Función para formatear tiempo (segundos a mm:ss)
   function formatTime(seconds) {
     if (isNaN(seconds)) return '0:00';
     const mins = Math.floor(seconds / 60);
@@ -308,44 +336,39 @@ function initMusica() {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   }
 
-  // Actualizar nombre de canción
   function updateSongName() {
+    if (!cancionSpan) return;
     const nombreArchivo = playlist[currentIndex].split('/').pop().replace('.mp3', '');
     const nombreLegible = nombreArchivo.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
     cancionSpan.textContent = nombreLegible;
   }
   updateSongName();
 
-  // Cargar metadatos para obtener duración
   audio.addEventListener('loadedmetadata', () => {
-    duracionSpan.textContent = formatTime(audio.duration);
+    if (duracionSpan) duracionSpan.textContent = formatTime(audio.duration);
   });
 
-  // Actualizar progreso
   audio.addEventListener('timeupdate', () => {
-    if (audio.duration) {
+    if (audio.duration && progresoDiv && tiempoActualSpan) {
       const porcentaje = (audio.currentTime / audio.duration) * 100;
       progresoDiv.style.width = `${porcentaje}%`;
       tiempoActualSpan.textContent = formatTime(audio.currentTime);
     }
   });
 
-  // Al terminar la canción, pasar a la siguiente
   audio.addEventListener('ended', nextSong);
 
-  // Función para reproducir/pausar
   function togglePlay() {
     if (isPlaying) {
       audio.pause();
-      icon.className = 'bi bi-play-circle';
+      if (icon) icon.className = 'bi bi-play-circle';
     } else {
       audio.play().catch(e => console.log('Error al reproducir:', e));
-      icon.className = 'bi bi-pause-circle';
+      if (icon) icon.className = 'bi bi-pause-circle';
     }
     isPlaying = !isPlaying;
   }
 
-  // Cambiar a siguiente canción
   function nextSong() {
     currentIndex = (currentIndex + 1) % playlist.length;
     audio.src = playlist[currentIndex];
@@ -354,11 +377,10 @@ function initMusica() {
     if (isPlaying) {
       audio.play().catch(e => console.log('Error al reproducir:', e));
     }
-    progresoDiv.style.width = '0%';
-    tiempoActualSpan.textContent = '0:00';
+    if (progresoDiv) progresoDiv.style.width = '0%';
+    if (tiempoActualSpan) tiempoActualSpan.textContent = '0:00';
   }
 
-  // Cambiar a canción anterior
   function prevSong() {
     currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
     audio.src = playlist[currentIndex];
@@ -367,27 +389,26 @@ function initMusica() {
     if (isPlaying) {
       audio.play().catch(e => console.log('Error al reproducir:', e));
     }
-    progresoDiv.style.width = '0%';
-    tiempoActualSpan.textContent = '0:00';
+    if (progresoDiv) progresoDiv.style.width = '0%';
+    if (tiempoActualSpan) tiempoActualSpan.textContent = '0:00';
   }
 
-  // Evento clic en la barra de progreso
-  barraProgreso.addEventListener('click', (e) => {
-    const rect = barraProgreso.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
-    const width = rect.width;
-    const porcentaje = (clickX / width) * 100;
-    if (audio.duration) {
-      audio.currentTime = (porcentaje / 100) * audio.duration;
-    }
-  });
+  if (barraProgreso) {
+    barraProgreso.addEventListener('click', (e) => {
+      const rect = barraProgreso.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const width = rect.width;
+      const porcentaje = (clickX / width) * 100;
+      if (audio.duration) {
+        audio.currentTime = (porcentaje / 100) * audio.duration;
+      }
+    });
+  }
 
-  // Eventos de botones
   playPauseBtn.addEventListener('click', togglePlay);
   nextBtn.addEventListener('click', nextSong);
   prevBtn.addEventListener('click', prevSong);
 
-  // Tecla espacio para pausar/reanudar
   document.addEventListener('keydown', (e) => {
     if (e.code === 'Space' && !e.target.matches('input, textarea, button')) {
       e.preventDefault();
@@ -395,53 +416,14 @@ function initMusica() {
     }
   });
 
-  // Pausar al salir de la página
   window.addEventListener('beforeunload', () => {
     audio.pause();
   });
 
-  // === REPRODUCCIÓN AUTOMÁTICA MEJORADA ===
-  // Intenta reproducir inmediatamente (solo funciona en algunos navegadores de escritorio)
-  const attemptAutoPlay = () => {
-    audio.play().then(() => {
-      isPlaying = true;
-      icon.className = 'bi bi-pause-circle';
-      console.log('Reproducción automática exitosa');
-    }).catch(() => {
-      console.log('Autoplay bloqueado, esperando interacción del usuario...');
-      // Escucha el primer toque o clic en todo el documento (móviles)
-      const startOnInteraction = () => {
-        audio.play().then(() => {
-          isPlaying = true;
-          icon.className = 'bi bi-pause-circle';
-          console.log('Reproducción iniciada por interacción');
-        }).catch(e => console.log('Error al reproducir tras interacción:', e));
-        document.removeEventListener('click', startOnInteraction);
-        document.removeEventListener('touchstart', startOnInteraction);
-      };
-      document.addEventListener('click', startOnInteraction, { once: true });
-      document.addEventListener('touchstart', startOnInteraction, { once: true });
-    });
-  };
-
-  // Esperar a que el audio esté listo
-// Esperar a que el audio esté listo (sin autoplay)
-// if (audio.readyState >= 2) {
-//   attemptAutoPlay();
-// } else {
-//   audio.addEventListener('canplay', attemptAutoPlay, { once: true });
-// }
-  // Forzar carga
-  audio.load();
+  audio.load(); // Precarga sin autoplay
 }
 
-// Llamar dentro de DOMContentLoaded (ya está en tu código)
-document.addEventListener('DOMContentLoaded', function() {
-  // ... otras inicializaciones ...
-  initMusica();
-});
-
-// ===== CARRUSEL DE FOTOS CON FRASE (AUTOMÁTICO) =====
+// ===== CARRUSEL DE FOTOS CON FRASE =====
 function initCarruselFrase() {
   const imagenes = document.querySelectorAll('.foto-frase-img');
   if (!imagenes.length) return;
@@ -454,16 +436,10 @@ function initCarruselFrase() {
     imagenes[index].classList.add('active');
   }
 
-  setInterval(cambiarImagen, 4000); // Cambia cada 2 segundos
+  setInterval(cambiarImagen, 4000);
 }
 
-// Llamar a la función dentro de DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function() {
-  // ... tu código existente ...
-  initCarruselFrase();
-});
-
-// ===== FORMULARIO RSVP – ENVÍO POR WHATSAPP =====
+// ===== FORMULARIO RSVP =====
 function initRSVPForm() {
   const form = document.getElementById('rsvp-form');
   if (!form) return;
@@ -481,25 +457,14 @@ function initRSVPForm() {
       return;
     }
 
-    // Construir mensaje
     const mensaje = `Hola soy, ${nombre} ${apellidos}, *${confirmacion}* a la fiesta de celebración en el local, iré con ${asistentes} ${asistentes === '1' ? 'persona' : 'personas'} a celebrar con ustedes!`;
-
-    // Número de WhatsApp (código de país 52 para México)
     const numero = '5544705244';
     const url = `https://wa.me/52${numero}?text=${encodeURIComponent(mensaje)}`;
-
-    // Abrir WhatsApp en nueva pestaña
     window.open(url, '_blank');
   });
 }
 
-// Llamar dentro de DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function() {
-  // ... tus otras funciones ...
-  initRSVPForm();
-});
-
-// ===== INTERSECTION OBSERVER PARA LA SECCIÓN NOVIOS =====
+// ===== OBSERVER NOVIOS =====
 function initNoviosObserver() {
   const bloques = document.querySelectorAll('.novios-bloque');
   if (!bloques.length) return;
@@ -509,23 +474,15 @@ function initNoviosObserver() {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       } else {
-        entry.target.classList.remove('visible'); // Opcional: ocultar al salir
+        entry.target.classList.remove('visible');
       }
     });
-  }, {
-    threshold: 0.3,
-    rootMargin: '0px'
-  });
+  }, { threshold: 0.3, rootMargin: '0px' });
 
   bloques.forEach(bloque => observer.observe(bloque));
 }
 
-// Llamar dentro de DOMContentLoaded (junto a las demás funciones)
-document.addEventListener('DOMContentLoaded', function() {
-  // ... tu código existente ...
-  initNoviosObserver();
-});
-// ===== INTERSECTION OBSERVER PARA LA SECCIÓN PADRINOS =====
+// ===== OBSERVER PADRINOS =====
 function initPadrinosObserver() {
   const padrinosCards = document.querySelectorAll('.padrino-card');
   if (!padrinosCards.length) return;
@@ -535,19 +492,10 @@ function initPadrinosObserver() {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       } else {
-        entry.target.classList.remove('visible'); // Oculta al salir
+        entry.target.classList.remove('visible');
       }
     });
-  }, {
-    threshold: 0.3,
-    rootMargin: '0px'
-  });
+  }, { threshold: 0.3, rootMargin: '0px' });
 
   padrinosCards.forEach(card => observer.observe(card));
 }
-
-// Llama a esta función dentro de DOMContentLoaded, junto a las demás
-document.addEventListener('DOMContentLoaded', function() {
-  // ... tu código existente ...
-  initPadrinosObserver();
-});

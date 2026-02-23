@@ -2578,3 +2578,7 @@ body {
   .lightbox-contenedor { width: 95%; }
   .lightbox-prev, .lightbox-next { width: 35px; height: 35px; font-size: 1.2rem; }
 }
+.back-to-top {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
