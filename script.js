@@ -425,12 +425,12 @@ function initMusica() {
   };
 
   // Esperar a que el audio esté listo
-  if (audio.readyState >= 2) {
-    attemptAutoPlay();
-  } else {
-    audio.addEventListener('canplay', attemptAutoPlay, { once: true });
-  }
-
+// Esperar a que el audio esté listo (sin autoplay)
+// if (audio.readyState >= 2) {
+//   attemptAutoPlay();
+// } else {
+//   audio.addEventListener('canplay', attemptAutoPlay, { once: true });
+// }
   // Forzar carga
   audio.load();
 }
@@ -524,4 +524,30 @@ function initNoviosObserver() {
 document.addEventListener('DOMContentLoaded', function() {
   // ... tu código existente ...
   initNoviosObserver();
+});
+// ===== INTERSECTION OBSERVER PARA LA SECCIÓN PADRINOS =====
+function initPadrinosObserver() {
+  const padrinosCards = document.querySelectorAll('.padrino-card');
+  if (!padrinosCards.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible'); // Oculta al salir
+      }
+    });
+  }, {
+    threshold: 0.3,
+    rootMargin: '0px'
+  });
+
+  padrinosCards.forEach(card => observer.observe(card));
+}
+
+// Llama a esta función dentro de DOMContentLoaded, junto a las demás
+document.addEventListener('DOMContentLoaded', function() {
+  // ... tu código existente ...
+  initPadrinosObserver();
 });

@@ -7,7 +7,7 @@
   font-style: normal;
   font-display: swap;
 }
-
+ 
 @font-face {
   font-family: 'Allura';
   src: url('tipografias/Allura-Regular.woff2') format('woff2'),
@@ -32,6 +32,8 @@
   --tipografia-manuscrita-brand: 'Allura', cursive;
   --tipografia-fecha: 'Cormorant Garamond', serif;
   --tipografia-ampersand: 'Playfair Display', serif;
+   --tipografia-manuscrita: 'Dancing Script', cursive;
+  --tipografia-manuscrita-brand: 'Allura', cursive;
 }
 
 /* ========== GLOBAL ========== */
@@ -963,42 +965,28 @@ body {
     min-height: 90vh;   /* ← Aquí se define la altura, Ocupa el 90% del alto de la ventana */
     padding: 1rem 0;
   }
-}
-
-
-
-
-
-
-
-/* ========== NUESTRA HISTORIA ========== */
+}/* ========== NUESTRA HISTORIA ========== */
 .historia-section {
   background-color: var(--blanco);
   overflow: hidden;
-}
-/* ===== FLOR DECORATIVA EN HISTORIA (ESQUINA SUPERIOR DERECHA) ===== */
-.historia-section {
-  position: relative; /* Necesario para posicionar la flor */
+  position: relative;
 }
 
+/* Imágenes decorativas (mantén tus rutas) */
 .historia-section::after {
   content: "";
   position: absolute;
   top: 0;
   right: 0;
-  width: 180px;        /* 🌟 TAMAÑO EN ESCRITORIO (ajusta aquí) */
-  height: 180px;       /* 🌟 TAMAÑO EN ESCRITORIO (ajusta aquí) */
+  width: 180px;
+  height: 180px;
   background-image: url('imagenes/flor03.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top right;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.5;        /* 🌟 OPACIDAD EN ESCRITORIO (0 = transparente, 1 = sólido) */
-}
-/* ===== IMAGEN DECORATIVA IZQUIERDA EN HISTORIA (SUPERIOR) ===== */
-.historia-section {
-  position: relative; /* Asegura que los pseudoelementos se posicionen respecto a la sección */
+  opacity: 0.5;
 }
 
 .historia-section::before {
@@ -1006,68 +994,15 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 180px;               /* 🌟 TAMAÑO EN ESCRITORIO */
-  height: 180px;              /* 🌟 TAMAÑO EN ESCRITORIO */
-  background-image: url('imagenes/lineas01.png'); /* Cambia por tu imagen */
+  width: 180px;
+  height: 180px;
+  background-image: url('imagenes/lineas01.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top left;
   pointer-events: none;
   z-index: 1;
   margin-top: -1px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 992px) {
-  .historia-section::before {
-    width: 150px;
-    height: 150px;
-    margin-top: -1px;
-  }
-}
-
-@media (max-width: 768px) {
-  .historia-section::before {
-    width: 120px;
-    height: 117px;
-    margin-top: -1;
-  }
-}
-
-@media (max-width: 576px) {
-  .historia-section::before {
-    width: 90px;
-    height: 88.5px;  
-    margin-top: -1;
-  }
-}
-
-/* ===== RESPONSIVE ===== */
-/* 📱 Tablet (max-width: 992px) */
-@media (max-width: 992px) {
-  .historia-section::after {
-    width: 140px;      /* 🌟 TAMAÑO EN TABLET */
-    height: 140px;
-    opacity: 0.4;
-  }
-}
-
-/* 📱 Móvil grande (max-width: 768px) */
-@media (max-width: 768px) {
-  .historia-section::after {
-    width: 120px;      /* 🌟 TAMAÑO EN MÓVIL GRANDE */
-    height: 120px;
-    opacity: 0.3;
-  }
-}
-
-/* 📱 Móvil pequeño (max-width: 576px) */
-@media (max-width: 576px) {
-  .historia-section::after {
-    width: 100px;      /* 🌟 TAMAÑO EN MÓVIL PEQUEÑO */
-    height: 100px;
-    opacity: 0.25;
-  }
 }
 
 .historia-grid {
@@ -1093,7 +1028,6 @@ body {
 
 .historia-item:hover {
   transform: translateY(-5px);
-  background: none !important;
 }
 
 .historia-divider {
@@ -1114,18 +1048,27 @@ body {
   padding-bottom: 0.25rem;
 }
 
+/* Títulos de historia (se mantienen) */
 .historia-item h3 {
   font-family: var(--tipografia-titulo);
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 400;
   margin-bottom: 0.75rem;
   color: var(--gris-oscuro);
 }
 
+/* ===== PÁRRAFOS DE HISTORIA (ahora igual a .vestimenta-intro) ===== */
 .historia-item p {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;          /* base igual a vestimenta-intro */
+  font-weight: 300;
+  font-style: italic;
   color: var(--gris-oscuro);
+  line-height: 1.6;
+  max-width: 600px;            /* ligeramente menor para que no desborde */
+  margin: 0 0 1rem 0;          /* ajuste para alineación izquierda */
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-bottom: 1rem;
   opacity: 0.9;
 }
 
@@ -1134,9 +1077,6 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
 }
 
 .historia-imagen {
@@ -1154,41 +1094,74 @@ body {
   transform: scale(1);
 }
 
-.historia-section::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 180px;
-  height: 180px;
-  background-image: url('imagenes/flor03.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top right;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.5;
-}
-
-@media (max-width: 992px) {
-  .historia-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .historia-imagen { max-width: 580px; }
-  .historia-section::after { width: 160px; height: 160px; opacity: 0.54; }
+/* ========== MEDIA QUERIES (mismos que vestimenta) ========== */
+@media (max-width: 991px) {
+  .historia-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .historia-imagen {
+    max-width: 580px;
+  }
+  .historia-item h3 {
+    font-size: 1.8rem;
+  }
+  .historia-item p {
+    font-size: 1.1rem;        /* como .vestimenta-intro en 991px */
+  }
+  .historia-section::after,
+  .historia-section::before {
+    width: 140px;
+    height: 140px;
+    opacity: 0.4;
+  }
 }
 
 @media (max-width: 768px) {
-  .historia-imagen { max-width: 480px; }
-  .historia-item h3 { font-size: 1.3rem; }
-  .historia-divider { width: 50px; }
-  .historia-section::after { width: 150px; height: 150px; opacity: 0.53; }
+  .historia-imagen {
+    max-width: 480px;
+  }
+  .historia-item h3 {
+    font-size: 2.2rem;
+  }
+  .historia-item p {
+    font-size: 1.1rem;        /* se mantiene (igual que vestimenta) */
+  }
+  .historia-divider {
+    width: 50px;
+  }
+  .historia-section::after,
+  .historia-section::before {
+    width: 120px;
+    height: 120px;
+    opacity: 0.3;
+  }
 }
 
 @media (max-width: 576px) {
-  .historia-imagen { max-width: 400px; }
-  .historia-item h3 { font-size: 1.2rem; }
-  .historia-divider { width: 40px; margin-left: 20px; }
-  .historia-item { padding: 25px; }
-  .historia-section::after { width: 120px; height: 120px; opacity: 0.55; }
+  .historia-imagen {
+    max-width: 400px;
+  }
+  .historia-item h3 {
+    font-size: 1.9rem;
+  }
+  .historia-item p {
+    font-size: 1.1rem;        /* se mantiene */
+    line-height: 1.5;
+  }
+  .historia-divider {
+    width: 40px;
+    margin-left: 20px;
+  }
+  .historia-item {
+    padding: 25px;
+  }
+  .historia-section::after,
+  .historia-section::before {
+    width: 100px;
+    height: 100px;
+    opacity: 0.25;
+  }
 }
 
 /* ========== CEREMONIA ========== */
@@ -2995,7 +2968,7 @@ body {
 .novios-section .section-title {
   text-align: center;
   margin-bottom: 3rem;
-  font-size: 2rem; /* Base, se ajusta en media queries */
+  font-size: 2rem;
 }
 
 /* Bloque base (escritorio) - dos columnas */
@@ -3038,21 +3011,31 @@ body {
   order: 2;
 }
 
+/* Títulos de novios (se mantienen como estaban) */
 .novios-titulo {
   font-family: var(--tipografia-manuscrita);
+  font-size: 2rem;
   color: var(--amarillo-mostaza);
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
 
+/* ===== PÁRRAFOS DE DESCRIPCIÓN (ahora igual a .vestimenta-intro) ===== */
 .novios-descripcion {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;          /* base igual a vestimenta-intro */
+  font-weight: 300;
+  font-style: italic;
   color: var(--gris-oscuro);
-  opacity: 0.8;
   line-height: 1.6;
-  max-width: 400px;
+  max-width: 700px;            /* igual que vestimenta-intro */
+  margin: 0 0 1.5rem 0;        /* ajuste para que no tenga margen automático centrado */
+  border-bottom: 1px solid rgba(0,0,0,0.05);  /* mismo borde inferior */
+  padding-bottom: 1.5rem;      /* mismo padding */
+  opacity: 0.9;
 }
 
+/* Imágenes de novios */
 .novios-img {
   max-width: 100%;
   height: auto;
@@ -3081,7 +3064,6 @@ body {
   opacity: 1;
 }
 
-/* Animación de flotación (después de visible) */
 @keyframes flotarNovios {
   0% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
@@ -3092,9 +3074,7 @@ body {
   animation: flotarNovios 4s ease-in-out infinite;
 }
 
-/* ========== MEDIA QUERIES ========== */
-
-/* Pantallas grandes (≥992px) */
+/* ========== MEDIA QUERIES (mismos que vestimenta) ========== */
 @media (min-width: 992px) {
   .novios-section .container {
     display: grid;
@@ -3112,7 +3092,7 @@ body {
     font-size: 2.5rem;
   }
   .novios-descripcion {
-    font-size: 1rem;
+    font-size: 1.3rem;        /* base */
   }
   .novios-img {
     max-height: 340px;
@@ -3127,8 +3107,7 @@ body {
   }
 }
 
-/* Pantallas de 991px a 769px (tablets grandes) */
-@media (max-width: 991px) and (min-width: 769px) {
+@media (max-width: 991px) {
   .novios-section {
     padding: 3rem 0;
   }
@@ -3137,12 +3116,12 @@ body {
     margin-bottom: 2.5rem;
   }
   .novios-titulo {
-    font-size: 2.2rem;    
+    font-size: 1.8rem;
     padding: 0 12px;
   }
   .novios-descripcion {
-    font-size: 0.95rem;
-        padding: 0 12px;
+    font-size: 1.1rem;        /* como .vestimenta-intro en 991px */
+    padding: 0 12px;
   }
   .novios-img {
     max-height: 270px;
@@ -3150,16 +3129,15 @@ body {
   .novios-bloque {
     gap: 2rem;
   }
-    .novios-section {
-  min-height: 90vh;           /* Ocupa al menos toda la pantalla */
-  display: flex;               /* Activa flexbox en la sección */
-  flex-direction: column;       /* Apila los elementos verticalmente */
-  justify-content: center;      /* Centra verticalmente el contenido */
-}
+  .novios-section {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
-/* Pantallas de 768px a 577px (tablets pequeñas) */
-@media (max-width: 768px) and (min-width: 577px) {
+@media (max-width: 768px) {
   .novios-section {
     padding: 2.5rem 0;
   }
@@ -3168,13 +3146,12 @@ body {
     margin-bottom: 2rem;
   }
   .novios-titulo {
-    font-size: 2rem;
-    
+    font-size: 2.2rem;
     padding: 0 12px;
   }
   .novios-descripcion {
-    font-size: 0.9rem;
-    padding: 12px;
+    font-size: 1.1rem;        /* se mantiene como en 991px (igual que vestimenta) */
+    padding: 0 12px;
   }
   .novios-img {
     max-height: 250px;
@@ -3182,16 +3159,15 @@ body {
   .novios-bloque {
     gap: 1.5rem;
   }
-    .novios-section {
-  min-height: 90vh;           /* Ocupa al menos toda la pantalla */
-  display: flex;               /* Activa flexbox en la sección */
-  flex-direction: column;       /* Apila los elementos verticalmente */
-  justify-content: center;      /* Centra verticalmente el contenido */
-}
+  .novios-section {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
-/* Pantallas de 576px a 481px (móviles grandes) */
-@media (max-width: 576px) and (min-width: 481px) {
+@media (max-width: 576px) {
   .novios-section {
     padding: 2rem 1rem;
   }
@@ -3199,7 +3175,7 @@ body {
     font-size: 1.6rem;
     margin-bottom: 1.5rem;
   }
-  /* Cambiamos a dos columnas forzadas */
+  /* Dos columnas forzadas */
   .novios-bloque {
     display: flex;
     gap: 1rem;
@@ -3213,97 +3189,318 @@ body {
     min-width: 0;
   }
   .novios-titulo {
-    font-size: 1.6rem;
+    font-size: 1.9rem;
   }
   .novios-descripcion {
-    font-size: 0.85rem;
+    font-size: 1.1rem;        /* se mantiene (igual que vestimenta) */
     line-height: 1.4;
+    padding: 0 8px;
   }
   .novios-img {
     max-height: 210px;
   }
-    .novios-section {
-  min-height: 90vh;           /* Ocupa al menos toda la pantalla */
-  display: flex;               /* Activa flexbox en la sección */
-  flex-direction: column;       /* Apila los elementos verticalmente */
-  justify-content: center;      /* Centra verticalmente el contenido */
+  .novios-section {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
+/* ========== SECCIÓN PADRINOS – COMPLETA ========== */
+.padrinos-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--blanco);
+  padding: 2rem 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-/* Pantallas de 480px a 394px (móviles medianos) */
-@media (max-width: 480px) and (min-width: 394px) {
-  .novios-section {
-    padding: 1.5rem 0.8rem;
+.padrinos-section .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* Imagen inferior centrada (base.png) */
+.padrino-imagen-inferior {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+  line-height: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.padrino-imagen-inferior img {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Imágenes decorativas superiores */
+.padrino-decor {
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  pointer-events: none;
+  display: none; /* ocultas en escritorio, se activan en media queries */
+}
+
+.padrino-decor.superior-izquierda {
+  left: 0;
+}
+
+.padrino-decor.superior-derecha {
+  right: 0;
+}
+
+.padrino-decor img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ===== DESCRIPCIÓN (ahora igual a .vestimenta-intro) ===== */
+.padrinos-descripcion {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;          /* base igual a vestimenta-intro */
+  font-weight: 300;
+  font-style: italic;
+  color: var(--gris-oscuro);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;    /* centrado como en vestimenta */
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding-bottom: 1.5rem;
+  text-align: center;
+  opacity: 0.9;
+}
+
+/* Bloques de tarjetas */
+.padrinos-bloque {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.padrinos-bloque:last-child {
+  margin-bottom: 0;
+}
+
+/* Tarjeta de cada padrino */
+.padrino-card {
+  flex: 0 1 180px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.padrino-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.padrino-card.visible .padrino-imagen-wrapper {
+  animation: flotarPadrino 4s ease-in-out infinite;
+}
+
+@keyframes flotarPadrino {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.padrino-imagen-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+  border: 3px solid #c1a57b;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.padrino-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Nombre del padrino (se mantiene) */
+.padrino-nombre {
+  font-family: var(--tipografia-manuscrita);
+  font-size: 2rem;
+  color: var(--gris-oscuro);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+/* Redes sociales */
+.padrino-redes {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.red-social {
+  color: var(--amarillo-mostaza);
+  font-size: 1.2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.red-social:hover {
+  color: var(--amarillo-elegante);
+  transform: scale(1.2);
+}
+
+/* ========== MEDIA QUERIES (mismos que vestimenta) ========== */
+@media (max-width: 991px) {
+  .padrinos-section {
+    padding: 3rem 0;
   }
-  .novios-section .section-title {
-    font-size: 1.4rem;
-    margin-bottom: 1.2rem;
+  .padrinos-descripcion {
+    font-size: 1.1rem;        /* como .vestimenta-intro en 991px */
+    margin-bottom: 2.5rem;
   }
-  .novios-bloque {
-    display: flex;
-    gap: 0.8rem;
+  .padrinos-bloque {
+    gap: 2rem;
     margin-bottom: 2rem;
   }
-  .novia-contenido,
-  .novio-contenido,
-  .novia-imagen,
-  .novio-imagen {
-    flex: 1 1 0;
-    min-width: 0;
+  .padrino-card {
+    flex: 0 1 calc(33.333% - 2rem);
+    max-width: 14rem;
+    min-width: 9rem;
   }
-  .novios-titulo {
-    font-size: 1.9rem;
-  }
-  .novios-descripcion {
-    font-size: 1rem;
-    line-height: 1.3;
-  }
-  .novios-img {
-    max-height: 290px;
-  }
-    .novios-section {
-  min-height: 90vh;           /* Ocupa al menos toda la pantalla */
-  display: flex;               /* Activa flexbox en la sección */
-  flex-direction: column;       /* Apila los elementos verticalmente */
-  justify-content: center;      /* Centra verticalmente el contenido */
+  .padrino-card {
+  flex: 0 0 calc(33.333% - (2/3)*gap);
 }
+  .padrino-imagen-wrapper {
+    border-width: 0.25rem;
+    margin-bottom: 0.8rem;
+  }
+  .padrino-nombre {
+    font-size: 1.8rem;
+  }
+  .red-social {
+    font-size: 1.2rem;
+  }
+  .padrino-imagen-inferior img {
+    max-width: 260px;
+    opacity: 0.7;
+  }
+  .padrino-decor {
+    display: block;
+  }
+  .padrino-decor.superior-izquierda img {
+    width: 120px;
+    opacity: 0.6;
+  }
+  .padrino-decor.superior-derecha img {
+    width: 120px;
+    opacity: 0.6;
+  }
 }
 
-/* Pantallas de 393px o menos (móviles pequeños) */
-@media (max-width: 393px) {
-  .novios-section {
-    padding: 1rem 0.5rem;
+@media (max-width: 768px) {
+  .padrinos-section {
+    padding: 2.5rem 0;
   }
-  .novios-section .section-title {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
+  .padrinos-descripcion {
+    font-size: 1.1rem;        /* se mantiene (igual que vestimenta) */
+    margin-bottom: 2rem;
   }
-  .novios-bloque {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+  .padrinos-bloque {
+    gap: 1.5rem;
+    margin-bottom: 2rem;
   }
-  .novia-contenido,
-  .novio-contenido,
-  .novia-imagen,
-  .novio-imagen {
-    flex: 1 1 0;
-    min-width: 0;
+  .padrino-card {
+    flex: 0 1 calc(33.333% - 1.5rem);
+    max-width: 12rem;
+    min-width: 8rem;
   }
-  .novios-titulo {
-    font-size: 1.2rem;
+  .padrino-imagen-wrapper {
+    border-width: 0.2rem;
+    margin-bottom: 0.7rem;
   }
-  .novios-descripcion {
-    font-size: 0.75rem;
-    line-height: 1.2;
+  .padrino-nombre {
+    font-size: 2.2rem;
   }
-  .novios-img {
-    max-height: 260px;
+  .red-social {
+    font-size: 1.1rem;
   }
-  .novios-section {
-  min-height: 90vh;           /* Ocupa al menos toda la pantalla */
-  display: flex;               /* Activa flexbox en la sección */
-  flex-direction: column;       /* Apila los elementos verticalmente */
-  justify-content: center;      /* Centra verticalmente el contenido */
+  .padrino-imagen-inferior img {
+    max-width: 220px;
+    opacity: 0.6;
+  }
+  .padrino-decor {
+    display: block;
+  }
+  .padrino-decor.superior-izquierda img {
+    width: 100px;
+    opacity: 0.5;
+  }
+  .padrino-decor.superior-derecha img {
+    width: 100px;
+    opacity: 0.5;
+  }
 }
+
+@media (max-width: 576px) {
+  .padrinos-section {
+    padding: 2rem 1rem;
+  }
+  .padrinos-descripcion {
+    font-size: 1.1rem;        /* se mantiene (igual que vestimenta) */
+    margin-bottom: 1.8rem;
+  }
+  .padrinos-bloque {
+    gap: 1rem;
+    margin-bottom: 1.8rem;
+  }
+  .padrino-card {
+    flex: 0 1 calc(33.333% - 1rem);
+    max-width: 11rem;
+    min-width: 7rem;
+  }
+  .padrino-imagen-wrapper {
+    border-width: 0.2rem;
+    margin-bottom: 0.6rem;
+  }
+  .padrino-nombre {
+    font-size: 1.9rem;
+  }
+  .red-social {
+    font-size: 1rem;
+  }
+  .padrino-imagen-inferior img {
+    max-width: 200px;
+    opacity: 0.6;
+  }
+  .padrino-decor {
+    display: block;
+  }
+  .padrino-decor.superior-izquierda img {
+    width: 90px;
+    opacity: 0.5;
+  }
+  .padrino-decor.superior-derecha img {
+    width: 90px;
+    opacity: 0.5;
+  }
 }
